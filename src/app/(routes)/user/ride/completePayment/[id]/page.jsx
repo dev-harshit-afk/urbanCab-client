@@ -21,7 +21,6 @@ const page = () => {
           headers: { Authorization: `Bearer ${userData.token}` },
         }
       );
-      console.log(resp);
       setRideData(resp.data.ride);
     } catch (error) {
     } finally {
@@ -68,7 +67,7 @@ const page = () => {
         description: "Proper uber clone",
         image: "https://1000logos.net/uber-logo/",
         order_id: order.id,
-        callback_url: "http://localhost:4000/payment/paymentVerification",
+        callback_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/paymentVerification`,
         prefill: {
           name: "Uber Harshit",
           email: "Uber.Harshit@clone.com",
@@ -181,7 +180,6 @@ function RateRideSection({ rate = 0, id, token }) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(resp);
       setSubmitted(true);
     } catch (error) {
       console.log("Error submitting rating:", error);

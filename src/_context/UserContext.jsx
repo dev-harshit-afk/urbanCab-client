@@ -19,11 +19,14 @@ const UserContext = ({ children }) => {
 
   const fetchUserData = useCallback(async (token) => {
     try {
-      const res = await axios.get(`http://localhost:4000/users/profile`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setUserData((prev) => ({ user: res.data.user, token: token }));
     } catch (error) {}
   });

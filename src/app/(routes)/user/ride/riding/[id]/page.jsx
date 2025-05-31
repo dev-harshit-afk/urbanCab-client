@@ -52,7 +52,6 @@ const Riding = () => {
 
   useEffect(() => {
     if (userData.token) {
-      console.log("User data:", userData);
       fetchRideDetails();
     }
   }, [userData]);

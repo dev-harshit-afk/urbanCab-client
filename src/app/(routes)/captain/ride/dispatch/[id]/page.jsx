@@ -26,7 +26,7 @@ const DispatchRide = () => {
           headers: { Authorization: `Bearer ${captainData.token}` },
         }
       );
-      console.log(resp);
+
       setRideData(resp.data.ride);
     } catch (error) {
       console.log(error);

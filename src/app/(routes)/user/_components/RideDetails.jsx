@@ -13,7 +13,6 @@ export const getInitials = (name) => {
 };
 
 const RideDetails = ({ rideDetails }) => {
-  console.log(rideDetails);
   const captain = rideDetails.captain || {};
   return (
     <div className="  md:w-md p-2 sm:p-5 sm:shadow-2xl h-fit  rounded-lg">

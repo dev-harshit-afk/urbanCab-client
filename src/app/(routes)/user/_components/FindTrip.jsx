@@ -38,7 +38,6 @@ const FindTrip = ({ setShowPanel, setRideDetails }) => {
         }
       );
 
-      console.log(resp);
       setLocationSuggestions(resp.data.suggestions);
     } catch (error) {
       console.log(error);

@@ -35,9 +35,8 @@ const CaptainRegister = () => {
     };
     const toastId = toast.loading("registering captain....");
     try {
-      console.log(newCaptain);
       const response = await axios.post(
-        `http://localhost:4000/captains/register`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/captains/register`,
         newCaptain
       );
       toast.success("registered successgully", { id: toastId });

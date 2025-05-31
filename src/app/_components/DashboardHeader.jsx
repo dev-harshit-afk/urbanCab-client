@@ -16,11 +16,14 @@ const DashboardHeader = () => {
   const handleLogout = async () => {
     const toastId = toast.loading("signin out....");
     try {
-      const response = await axios.get(`http://localhost:4000/users/logout`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/logout`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       toast.success("Logged out successfully...", { id: toastId });
 

@@ -33,7 +33,7 @@ const PastTrip = () => {
           headers: { Authorization: `Bearer ${captainData.token}` },
         }
       );
-      console.log(resp);
+
       setRideData(resp.data.ride);
     } catch (error) {
     } finally {

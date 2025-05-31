@@ -16,7 +16,6 @@ import toast from "react-hot-toast";
 
 const OngoingRideDetails = ({ rideDetails, distance, time, token, router }) => {
   const [isLoading, setIsLoading] = useState(false);
-  console.log("Ride details:", token);
 
   const { id } = useParams();
   const handleFinishRide = async () => {

@@ -29,9 +29,8 @@ const UserRegister = () => {
       password,
     };
     try {
-      console.log(process.env.NEXT_BASE_URL);
       const response = await axios.post(
-        `http://localhost:4000/users/register`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/register`,
         newUser
       );
       if (response.status == 201) {

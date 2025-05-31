@@ -35,7 +35,6 @@ const PastTrip = () => {
           headers: { Authorization: `Bearer ${userData.token}` },
         }
       );
-      console.log(resp);
       setRideData(resp.data.ride);
     } catch (error) {
     } finally {

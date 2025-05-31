@@ -21,8 +21,6 @@ const UserLogin = () => {
 
   useEffect(() => {
     if (userData.token) {
-      console.log(previousPath?.includes("captain"), previousPath);
-
       if (
         previousPath?.includes("captain") ||
         previousPath?.includes("login") ||
@@ -42,14 +40,12 @@ const UserLogin = () => {
     };
     const toastId = toast.loading("Login...");
     try {
-      console.log(process.env.NEXT_PUBLIC_BASE_URL);
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/users/login`,
         loginUser
       );
 
       toast.success("Logged in successfully...", { id: toastId });
-      console.log(response);
       setUserData({
         user: response.data.user,
         token: response.data.token,

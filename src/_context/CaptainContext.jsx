@@ -29,12 +29,15 @@ const CaptainContext = ({ children }) => {
 
   const fetchCaptainData = useCallback(async (token) => {
     try {
-      const res = await axios.get(`http://localhost:4000/captains/profile`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log("res", res);
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/captains/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       setCaptainData((prev) => ({ captain: res.data.captain, token: token }));
     } catch (error) {
       console.log(error);
@@ -43,7 +46,7 @@ const CaptainContext = ({ children }) => {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("captainToken")?.toString();
-    console.log(storedToken);
+
     if (!storedToken) {
       return;
     }

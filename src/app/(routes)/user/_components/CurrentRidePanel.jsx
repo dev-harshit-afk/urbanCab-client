@@ -13,7 +13,6 @@ import React, { useContext } from "react";
 import { getInitials } from "./RideDetails";
 
 const CurrentRidePanel = ({ rideDetails, distance, time }) => {
-  console.log("Ride details in current ride panel", rideDetails);
   const captain = rideDetails.captain || {};
 
   return (

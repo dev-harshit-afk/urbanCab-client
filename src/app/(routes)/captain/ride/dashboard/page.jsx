@@ -83,10 +83,9 @@ const CaptainDashboard = () => {
   useEffect(() => {
     // Handler function
     const handleNewRide = (data) => {
-      console.log("new ride", data);
       if (!data.ride) return;
       setAvailableRides((prev) => [...prev, data.ride]);
-      setNewAvailableRideDetails(data.ride);
+      // setNewAvailableRideDetails(data.ride);
       setIsNewRideAvailable(true);
     };
 
@@ -108,7 +107,6 @@ const CaptainDashboard = () => {
           },
         }
       );
-      console.log("pending rides", response.data);
       if (response.data.rides.length === 0) return;
       setAvailableRides(() => [...response.data.rides]);
       setIsNewRideAvailable(true);

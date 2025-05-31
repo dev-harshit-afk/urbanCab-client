@@ -16,7 +16,6 @@ const RidePopUp = ({
     setAvailableRides([]);
     setIsNewRideAvailable(false);
   };
-  console.log(availableRides);
   return (
     <div className="sm:w-md  w-full  p-2 border-2 h-fit rounded-lg">
       {availableRides.length > 0 && (

@@ -21,8 +21,6 @@ const CaptainLogin = () => {
 
   useEffect(() => {
     if (captainData.token) {
-      console.log(previousPath?.includes("user"), previousPath);
-
       if (
         previousPath?.includes("user") ||
         previousPath?.includes("login") ||
@@ -45,14 +43,12 @@ const CaptainLogin = () => {
     };
     const toastId = toast.loading("Capatian login...");
     try {
-      console.log(captainLogin);
       const response = await axios.post(
-        `http://localhost:4000/captains/login`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/captains/login`,
         captainLogin
       );
 
       toast.success("Logged in successfully...", { id: toastId });
-      console.log(response);
       setCaptainData({
         captain: response.data.captain,
         token: response.data.token,

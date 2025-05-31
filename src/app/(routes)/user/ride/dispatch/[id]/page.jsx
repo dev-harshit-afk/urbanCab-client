@@ -19,13 +19,23 @@ const DispatchRide = () => {
   const router = useRouter();
   const socket = getSocket();
 
-  socket.on("ride-accepted", (data) => {
-    setRideData(data.ride);
-  });
-  socket.on("ride-started", (data) => {
-    console.log("ride started", data);
-    router.push(`/user/ride/riding/${data.ride.id}`);
-  });
+  useEffect(() => {
+    socket.on("ride-accepted", (data) => {
+      setRideData(data.ride);
+    });
+    socket.on("ride-started", (data) => {
+      router.push(`/user/ride/riding/${data.ride.id}`);
+    });
+
+    return () => {
+      socket.off("ride-accepted", (data) => {
+        setRideData(data.ride);
+      });
+      socket.off("ride-started", (data) => {
+        router.push(`/user/ride/riding/${data.ride.id}`);
+      });
+    };
+  }, [socket]);
 
   const getRideDetails = async () => {
     setIsFetchingData(true);
@@ -36,7 +46,6 @@ const DispatchRide = () => {
           headers: { Authorization: `Bearer ${userData.token}` },
         }
       );
-      console.log(resp);
       setRideData(resp.data.ride);
     } catch (error) {
     } finally {

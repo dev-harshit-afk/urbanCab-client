@@ -11,7 +11,6 @@ const ProtectedUserRoute = ({ children }) => {
 
   useEffect(() => {
     if (!userData?.token) {
-      console.log("userData", userData);
       return router.push("/user/login");
     } else {
       setLoading(false);

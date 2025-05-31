@@ -16,12 +16,11 @@ import { useRouter } from "next/navigation";
 const DashboardRiderData = ({ captain }) => {
   const router = useRouter();
   // Example stats (replace with real data)
-  const rating = captain.averageRating || 4.7;
+  const rating = Number(captain.averageRating) || 4.7;
   const totalRides = captain.totalRides || 128;
   const totalFare = captain.totalFares || 12450;
   const hoursOnline = captain.totalTime || 120;
   const kmDriven = captain.totalDistance || 980;
-
   return (
     <div className=" w-full sm:w-xl p-4 border-2 h-fit rounded-2xl bg-white shadow-md">
       <div className="flex flex-col sm:gap-4">
@@ -55,7 +54,7 @@ const DashboardRiderData = ({ captain }) => {
                   />
                 ))}
                 <span className="text-xs text-gray-600 ml-1">
-                  {rating.toFixed(1)}
+                  {rating?.toFixed(1)}
                 </span>
               </div>
             </div>

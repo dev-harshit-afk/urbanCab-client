@@ -32,18 +32,16 @@ const SelectVehiclePanel = ({ rideDetails, fares }) => {
           },
         }
       );
-      console.log(resp);
 
       if (resp.data.redirect) {
         return router.push(resp.data.redirect);
       }
-      console.log(resp);
+
       toast.success("Ride created successfully");
-      // router.push(`/user/ride/dispatch/${resp.data.ride.id}`);
+      router.push(`/user/ride/dispatch/${resp.data.ride.id}`);
     } catch (error) {
       console.log(error);
       toast.error("Error in ride creating");
-      // console.log(error);
     } finally {
       setIsLoading(false);
     }

@@ -19,7 +19,7 @@ const LiveMapComponent = dynamic(
 
 const Riding = () => {
   const { id } = useParams();
-  console.log("Riding ID:", id);
+
   const [isLoading, setIsLoading] = useState(true);
   const [currentRideDetails, setCurrentRideDetails] = useState(null);
   const { captainData } = useContext(CaptainDataContext);
@@ -38,7 +38,6 @@ const Riding = () => {
           },
         }
       );
-      console.log("Ride details response:", response.data);
       setCurrentRideDetails(response.data.ride);
     } catch (error) {
       toast.error(error.response.data.message || "Something went wrong");
@@ -63,7 +62,6 @@ const Riding = () => {
 
   useEffect(() => {
     if (captainData.token) {
-      console.log("User data:", captainData);
       fetchRideDetails();
     }
   }, [captainData]);
